@@ -1,0 +1,5 @@
+{
+  "name": "Character Creator AI",
+  "description": "An app for writers to create detailed character visuals using AI. Describe appearance, clothing, mood, and scene, provide reference images, and choose from various art styles to bring your characters to life.",
+  "requestFramePermissions": []
+}
