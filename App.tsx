@@ -11,6 +11,7 @@ import { translations, type Language, type TranslationKey } from './locales/inde
 const App: React.FC = () => {
     const [language, setLanguage] = useState<Language>('es');
     const [formData, setFormData] = useState<FormData>({
+        name: '',
         appearance: '',
         clothing: '',
         mood: '',
@@ -90,6 +91,7 @@ const App: React.FC = () => {
                         isLoading={isLoading}
                         error={error}
                         t={t}
+                        formData={formData}
                     />
                 </main>
             </div>

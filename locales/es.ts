@@ -10,6 +10,8 @@ export const es = {
 
     // Character Form
     describeYourCharacter: 'Describe tu Personaje',
+    characterNameLabel: 'Nombre del Personaje (Opcional)',
+    characterNamePlaceholder: 'ej., Kaelen la Hoja Sombría',
     appearanceLabel: 'Apariencia',
     appearancePlaceholder: 'ej., cabello largo plateado, penetrantes ojos azules, una cicatriz sobre la ceja izquierda...',
     clothingLabel: 'Vestimenta',

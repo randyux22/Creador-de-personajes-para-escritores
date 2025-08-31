@@ -39,6 +39,14 @@ export const CharacterForm: React.FC<CharacterFormProps> = ({
             <div className="p-6">
                 <h2 className="text-2xl font-semibold text-white mb-4">{t('describeYourCharacter')}</h2>
                 <form onSubmit={(e) => { e.preventDefault(); onSubmit(); }} className="space-y-4">
+                    <Input
+                        label={t('characterNameLabel')}
+                        name="name"
+                        type="text"
+                        value={formData.name}
+                        onChange={handleChange}
+                        placeholder={t('characterNamePlaceholder')}
+                    />
                     <Textarea
                         label={t('appearanceLabel')}
                         name="appearance"

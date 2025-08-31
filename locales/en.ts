@@ -10,6 +10,8 @@ export const en = {
 
     // Character Form
     describeYourCharacter: 'Describe Your Character',
+    characterNameLabel: 'Character Name (Optional)',
+    characterNamePlaceholder: 'e.g., Kaelen the Shadow Blade',
     appearanceLabel: 'Appearance',
     appearancePlaceholder: 'e.g., long silver hair, piercing blue eyes, a scar over the left eyebrow...',
     clothingLabel: 'Clothing',

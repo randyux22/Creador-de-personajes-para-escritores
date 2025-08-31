@@ -2,6 +2,7 @@
 import { type TranslationKey } from './locales/index';
 
 export interface FormData {
+  name: string;
   appearance: string;
   clothing: string;
   mood: string;

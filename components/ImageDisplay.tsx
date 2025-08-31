@@ -2,16 +2,17 @@
 import React from 'react';
 import { Card } from './ui/Card';
 import { Spinner } from './ui/Spinner';
-import { type TFunction } from '../types';
+import { type TFunction, type FormData } from '../types';
 
 interface ImageDisplayProps {
     generatedImage: string | null;
     isLoading: boolean;
     error: string | null;
     t: TFunction;
+    formData: FormData;
 }
 
-export const ImageDisplay: React.FC<ImageDisplayProps> = ({ generatedImage, isLoading, error, t }) => {
+export const ImageDisplay: React.FC<ImageDisplayProps> = ({ generatedImage, isLoading, error, t, formData }) => {
     
     const loadingMessages = React.useMemo(() => [
         t('loadingMessage1'),
@@ -35,6 +36,14 @@ export const ImageDisplay: React.FC<ImageDisplayProps> = ({ generatedImage, isLo
             return () => clearInterval(interval);
         }
     }, [isLoading, loadingMessages]);
+    
+    const createFileName = () => {
+        const safeName = formData.name.trim().replace(/[^a-z0-9]/gi, '_').toLowerCase();
+        if (safeName) {
+            return `${safeName}.jpeg`;
+        }
+        return `character-${new Date().toISOString()}.jpeg`;
+    };
 
     const renderContent = () => {
         if (isLoading) {
@@ -67,7 +76,7 @@ export const ImageDisplay: React.FC<ImageDisplayProps> = ({ generatedImage, isLo
                     />
                     <a
                         href={generatedImage}
-                        download={`character-${new Date().toISOString()}.jpeg`}
+                        download={createFileName()}
                         className="mt-4 w-full sm:w-auto inline-flex justify-center items-center bg-brand-secondary text-white font-bold py-2 px-6 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-base-200 focus:ring-brand-secondary transition-colors duration-200"
                     >
                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
