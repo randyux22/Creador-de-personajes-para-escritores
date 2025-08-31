@@ -1,5 +1,5 @@
 
-import { type TranslationKey } from './locales';
+import { type TranslationKey } from './locales/index';
 
 export interface FormData {
   appearance: string;

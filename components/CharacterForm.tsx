@@ -1,12 +1,13 @@
 
 import React from 'react';
 import { type FormData, type ReferenceImage, type TFunction } from '../types';
-import { ART_STYLES, ASPECT_RATIOS } from '../constants';
+import { ART_STYLE_KEYS, ASPECT_RATIOS } from '../constants';
 import { Textarea } from './ui/Textarea';
 import { Input } from './ui/Input';
 import { Select } from './ui/Select';
 import { Button } from './ui/Button';
 import { Card } from './ui/Card';
+import { type TranslationKey } from '../locales/index';
 
 interface CharacterFormProps {
     formData: FormData;
@@ -107,14 +108,20 @@ export const CharacterForm: React.FC<CharacterFormProps> = ({
                         name="style"
                         value={formData.style}
                         onChange={handleChange}
-                        options={ART_STYLES.map(style => ({ value: style, label: style }))}
+                        options={ART_STYLE_KEYS.map(styleKey => ({ 
+                            value: styleKey, 
+                            label: t(styleKey as TranslationKey) 
+                        }))}
                     />
                     <Select
                         label={t('imageDimensionsLabel')}
                         name="aspectRatio"
                         value={formData.aspectRatio}
                         onChange={handleChange}
-                        options={Object.entries(ASPECT_RATIOS).map(([value, label]) => ({ value, label: `${label} (${value})` }))}
+                        options={Object.entries(ASPECT_RATIOS).map(([value, labelKey]) => ({ 
+                            value, 
+                            label: `${t(labelKey as TranslationKey)} (${value})` 
+                        }))}
                     />
                     <div className="pt-4">
                         <Button type="submit" isLoading={isLoading} disabled={isLoading}>

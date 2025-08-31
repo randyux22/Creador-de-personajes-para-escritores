@@ -1,6 +1,7 @@
 
 import { GoogleGenAI, Modality } from "@google/genai";
 import { type FormData, type ReferenceImage, type TFunction } from '../types';
+import { ART_STYLE_API_VALUES, ASPECT_RATIO_LABELS } from '../constants';
 
 if (!process.env.API_KEY) {
     throw new Error("API_KEY environment variable is not set");
@@ -8,19 +9,13 @@ if (!process.env.API_KEY) {
 
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
-const ASPECT_RATIOS: { [key: string]: string } = {
-    '1:1': 'Square',
-    '16:9': 'Landscape',
-    '9:16': 'Portrait',
-    '4:3': 'Standard',
-    '3:4': 'Tall'
-};
-
 export async function generateCharacterImage(formData: FormData, t: TFunction): Promise<string> {
     const { appearance, clothing, mood, scene, style, aspectRatio } = formData;
+    
+    const styleForApi = ART_STYLE_API_VALUES[style] || 'Photorealistic';
 
     const prompt = `Generate a high-quality, detailed image of a character.
-    Style: ${style}.
+    Style: ${styleForApi}.
     Appearance: ${appearance || 'Not specified'}.
     Clothing: ${clothing || 'Not specified'}.
     Mood: ${mood || 'Neutral'}.
@@ -52,10 +47,11 @@ export async function generateCharacterImage(formData: FormData, t: TFunction): 
 
 export async function editCharacterImage(formData: FormData, referenceImage: ReferenceImage, t: TFunction): Promise<string> {
     const { appearance, clothing, mood, scene, style, aspectRatio } = formData;
-    const aspectRatioLabel = ASPECT_RATIOS[aspectRatio] || 'Square';
+    const aspectRatioLabel = ASPECT_RATIO_LABELS[aspectRatio] || 'Square';
+    const styleForApi = ART_STYLE_API_VALUES[style] || 'Photorealistic';
 
     const prompt = `Using the provided image as a base, transform the character with the following details.
-    Create a new image in a ${style} style.
+    Create a new image in a ${styleForApi} style.
     The final image should have a ${aspectRatioLabel} (${aspectRatio}) aspect ratio.
     New Appearance Details: ${appearance || 'Keep similar to reference'}.
     New Clothing: ${clothing || 'Keep similar to reference'}.

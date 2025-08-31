@@ -46,5 +46,27 @@ export const es = {
     errorImageEditing: 'No se pudo editar la imagen del personaje. Inténtalo de nuevo.',
     errorNoImageReturned: "La generación de imagen falló, no se devolvieron imágenes.",
     errorNoImagePartReturned: "La edición de imagen falló, no se devolvió ninguna parte de imagen.",
-    errorFileRead: "No se pudo leer el archivo de imagen."
+    errorFileRead: "No se pudo leer el archivo de imagen.",
+
+    // Art Styles
+    photorealistic: 'Fotorrealista',
+    sketch: 'Boceto',
+    charcoalDrawing: 'Dibujo a Carboncillo',
+    oilPainting: 'Pintura al Óleo',
+    comicBook: 'Cómic',
+    watercolor: 'Acuarela',
+    animeManga: 'Anime/Manga',
+    threeDRender: 'Render 3D',
+    fantasyArt: 'Arte Fantástico',
+    pixelArt: 'Pixel Art',
+    cyberpunk: 'Cyberpunk',
+    steampunk: 'Steampunk',
+    impressionism: 'Impresionismo',
+
+    // Aspect Ratios
+    square: 'Cuadrado',
+    landscape: 'Horizontal',
+    portrait: 'Vertical',
+    standard: 'Estándar',
+    tall: 'Alto',
 };

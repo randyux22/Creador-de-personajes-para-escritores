@@ -5,8 +5,8 @@ import { ImageDisplay } from './components/ImageDisplay';
 import { Header } from './components/Header';
 import { type FormData, type ReferenceImage } from './types';
 import { generateCharacterImage, editCharacterImage } from './services/geminiService';
-import { ART_STYLES, ASPECT_RATIOS } from './constants';
-import { translations, type Language, type TranslationKey } from './locales';
+import { ART_STYLE_KEYS, ASPECT_RATIOS } from './constants';
+import { translations, type Language, type TranslationKey } from './locales/index';
 
 const App: React.FC = () => {
     const [language, setLanguage] = useState<Language>('es');
@@ -15,7 +15,7 @@ const App: React.FC = () => {
         clothing: '',
         mood: '',
         scene: '',
-        style: ART_STYLES[0],
+        style: ART_STYLE_KEYS[0],
         aspectRatio: Object.keys(ASPECT_RATIOS)[0],
     });
     const [referenceImage, setReferenceImage] = useState<ReferenceImage | null>(null);

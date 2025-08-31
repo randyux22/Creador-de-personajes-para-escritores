@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { type Language } from '../locales';
+import { type Language } from '../locales/index';
 import { type TFunction } from '../types';
 
 interface HeaderProps {
